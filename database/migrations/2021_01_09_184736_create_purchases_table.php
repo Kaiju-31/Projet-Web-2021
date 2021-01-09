@@ -15,6 +15,9 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->date("date_purchase");
+            $table->integer("id_game");
+            $table->integer("id_user");
             $table->timestamps();
         });
     }
