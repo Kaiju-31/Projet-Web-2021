@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Avis;
+use App\Comment;
 use Illuminate\Http\Request;
 
-class AvisController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AvisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Avis  $avis
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Avis $avis)
+    public function show(Comment $comment)
     {
         //
     }
@@ -52,10 +52,10 @@ class AvisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Avis  $avis
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Avis $avis)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -64,10 +64,10 @@ class AvisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Avis  $avis
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Avis $avis)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -75,10 +75,10 @@ class AvisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Avis  $avis
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Avis $avis)
+    public function destroy(Comment $comment)
     {
         //
     }

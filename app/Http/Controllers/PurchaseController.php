@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Achat;
+use App\Purchase;
 use Illuminate\Http\Request;
 
-class AchatController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AchatController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Achat  $achat
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(Achat $achat)
+    public function show(Purchase $purchase)
     {
         //
     }
@@ -52,10 +52,10 @@ class AchatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Achat  $achat
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Achat $achat)
+    public function edit(Purchase $purchase)
     {
         //
     }
@@ -64,10 +64,10 @@ class AchatController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Achat  $achat
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Achat $achat)
+    public function update(Request $request, Purchase $purchase)
     {
         //
     }
@@ -75,10 +75,10 @@ class AchatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Achat  $achat
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Achat $achat)
+    public function destroy(Purchase $purchase)
     {
         //
     }
