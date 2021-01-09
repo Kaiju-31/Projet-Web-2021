@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase extends Model
 {
     protected $fillable = ["date_purchase", "id_game", "id_user"];
+
+    public function users() {
+        return $this->belongsToMany(Comment::class);
+    }
 }

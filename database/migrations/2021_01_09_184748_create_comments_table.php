@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text("comment");
             $table->float("note");
             $table->integer("id_user");
+            $table->integer("id_game");
             $table->timestamps();
         });
     }
