@@ -22,7 +22,6 @@ class CreateGamesTable extends Migration
             $table->float("price");
             $table->string("plateform");
             $table->timestamps();
-            // test
         });
     }
 
