@@ -8,7 +8,7 @@
             </button>
         </div>
         <!-- Navbar brand -->
-        <a href="#" class="navbar-brand">
+        <a href="{{ route("game.index") }}" class="navbar-brand">
             <img src="https://www.gethalfmoon.com/static/site/img/fake-logo.svg" alt="#">
         </a>
         <!-- Navbar nav -->
@@ -41,8 +41,8 @@
         </ul>
         <!-- Navbar form (inline form) -->
         <div class="navbar-content ml-auto">
-            <form class="form-inline d-none d-md-flex ml-auto" action="..." method="..."> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                <input type="search" class="form-control" placeholder="Search" name="search">
+            <form class="form-inline d-none d-md-flex ml-auto" method="GET"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
+                <input type="text" class="form-control" placeholder="Search" name="search">
                 <button class="btn btn-success mr-5" type="submit"><i class="fas fa-search"></i></button>
             </form>
             <a href="" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
