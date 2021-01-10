@@ -44,4 +44,7 @@
             <button class="btn mr-5" type="button" onclick="halfmoon.toggleDarkMode()"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
+    <div class="content-wrapper">
+        @yield('content')
+    </div>
 </div>

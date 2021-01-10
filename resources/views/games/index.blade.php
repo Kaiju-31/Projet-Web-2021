@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('title')
-    ACCUEIL
+    Acceuil
 @endsection
 
 @section('content')

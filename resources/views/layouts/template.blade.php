@@ -10,7 +10,7 @@
 </head>
 <body class="dark-mode">
 @include('layouts.navbar')
-@yield('content')
+
 
 <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
 <script src="path/to/halfmoon.js"></script>
