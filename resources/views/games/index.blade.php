@@ -5,5 +5,10 @@
 @endsection
 
 @section('content')
-    <p>hello word</p>
+
+    @foreach($games as $game)
+        <p> {{ $game->name }} </p>
+    @endforeach
+
 @endsection
+

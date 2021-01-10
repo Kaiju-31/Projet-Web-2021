@@ -11,6 +11,89 @@ class GameSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('games')->insert(
+            [
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+                [
+                    "image" => "",
+                    "name" => "",
+                    "description" => "",
+                    "quantity" => "",
+                    "price" => "",
+                    "plateform" => ""
+                ],
+            ]
+        );
     }
 }
