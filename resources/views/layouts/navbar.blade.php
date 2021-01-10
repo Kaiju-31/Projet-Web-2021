@@ -66,7 +66,9 @@
     </div>
 
     <div class="content-wrapper">
-        @yield('content')
+        <div class="container-fluid">
+            @yield('content')
+        </div>
     </div>
     <nav class="navbar navbar-fixed-bottom">
         <span class="navbar-text ml-auto">

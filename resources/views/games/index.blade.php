@@ -5,10 +5,19 @@
 @endsection
 
 @section('content')
-
+    <div class="row">
     @foreach($games as $game)
-        <p> {{ $game->name }} </p>
+        <div class="w-400 mw-full col-3">
+            <div class="card p-0 shadow-lg">
+                <a href="{{ route("game.show", $game) }}"><img src="{{ $game->image }}" class="img-fluid rounded-top" alt=""></a>
+                <div class="content">
+                    <h2 class="content-title">
+                        {{ $game->name }}
+                    </h2>
+                </div>
+            </div>
+        </div>
     @endforeach
-
+    </div>
 @endsection
 
