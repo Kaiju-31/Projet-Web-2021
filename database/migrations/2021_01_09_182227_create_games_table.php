@@ -20,7 +20,7 @@ class CreateGamesTable extends Migration
             $table->text("description");
             $table->integer("quantity");
             $table->float("price");
-            $table->float("note");
+            $table->string("plateform");
             $table->timestamps();
         });
     }
