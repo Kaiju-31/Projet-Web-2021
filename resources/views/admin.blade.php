@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('title')
-    Home
+    Admin
 @endsection
 
 @section('content')
