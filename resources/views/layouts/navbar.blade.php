@@ -2,15 +2,11 @@
     <!-- Navbar (immediate child of the page wrapper) -->
     <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
     <nav class="navbar">
-        <div class="navbar-content">
-            <button id="toggle-sidebar-btn" class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </button>
-        </div>
         <!-- Navbar brand -->
         <a href="{{ route("game.index") }}" class="navbar-brand">
             <img src="https://www.gethalfmoon.com/static/site/img/fake-logo.svg" alt="#">
         </a>
+        <a href="{{ route("register") }}"><h1>{{ auth()->user()->name }}</h1></a>
         <!-- Navbar nav -->
         <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
             <li class="nav-item dropdown with-arrow active">
@@ -50,22 +46,6 @@
             <button class="btn mr-5" type="button" onclick="halfmoon.toggleDarkMode()"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
-
-    <div class="sidebar">
-        <div class="sidebar-menu">
-            <!-- Sidebar brand -->
-            <a href="#" class="sidebar-brand">
-                @yield('login_member')
-            </a>
-            <!-- Sidebar links and titles -->
-            <h5 class="sidebar-title">My Account</h5>
-            <div class="sidebar-divider"></div>
-            <a href="#" class="sidebar-link">Update my profile</a>
-            <a href="#" class="sidebar-link">My commands</a>
-
-        </div>
-    </div>
-
     <div class="content-wrapper">
         <div class="container-fluid">
             @yield('content')
