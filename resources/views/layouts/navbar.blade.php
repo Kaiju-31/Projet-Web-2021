@@ -45,7 +45,8 @@
                 <input type="text" class="form-control" placeholder="Search" name="search">
                 <button class="btn btn-success mr-5" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <a href="" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
+            <a href="{{ route("login") }}" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
+            <a href="{{ route("register") }}" class="btn btn-secondary mr-5"><i class="fas fa-user-plus"></i></a>
             <button class="btn mr-5" type="button" onclick="halfmoon.toggleDarkMode()"><i class="fas fa-moon"></i></button>
         </div>
     </nav>

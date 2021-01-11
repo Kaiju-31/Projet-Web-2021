@@ -17,3 +17,12 @@ Route::get('/', "GameController@index");
 Route::resources([
     "game" => "GameController"
 ]);
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])
+    ->name('admin.home')->
+    middleware('is_admin');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')
+    ->name('home');
