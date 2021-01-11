@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', "GameController@index");
 Route::resources([
-    "game" => "GameController"
+    "game" => "GameController",
+    "user" => "UserController",
+    "purchase" => "PurchaseController",
+    "home" => "HomeController"
 ]);
 
 Route::get('admin/home', [HomeController::class, 'adminHome'])

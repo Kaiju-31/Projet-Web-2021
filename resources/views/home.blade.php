@@ -18,9 +18,11 @@
                             <div class=”panel-heading”><h2> {{ auth()->user()->name }} </h2></div>
                             <span>Mail : {{ auth()->user()->email }} </span>
                             <p>Solde : {{ auth()->user()->balance }} €</p>
-                            @foreach()
 
-                            @endforeach
+{{--                            @foreach(auth()->user()->purchases as $u_purchase)--}}
+{{--                                <p> {{ $u_purchase->date_purchase }} </p>--}}
+{{--                            @endforeach--}}
+
                         @endif
                     </div>
                 </div>

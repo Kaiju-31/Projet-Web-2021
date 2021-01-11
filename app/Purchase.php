@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
-    protected $fillable = ["date_purchase", "id_game", "id_user"];
+    protected $fillable = ["date_purchase", "game_id", "user_id"];
 
     public function users() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function games() {

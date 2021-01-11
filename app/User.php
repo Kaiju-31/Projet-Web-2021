@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function purchases() {
-        return $this->belongsToMany(Purchase::class);
+        return $this->hasMany(Purchase::class);
     }
 
     public function comments() {
