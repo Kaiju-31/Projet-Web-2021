@@ -9,6 +9,10 @@ class Purchase extends Model
     protected $fillable = ["date_purchase", "id_game", "id_user"];
 
     public function users() {
-        return $this->belongsToMany(Comment::class);
+        return $this->belongsToMany(User::class);
+    }
+
+    public function games() {
+        return $this->belongsToMany(Game::class);
     }
 }
