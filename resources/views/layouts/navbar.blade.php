@@ -6,7 +6,9 @@
         <a href="{{ route("game.index") }}" class="navbar-brand">
             <img src="https://www.gethalfmoon.com/static/site/img/fake-logo.svg" alt="#">
         </a>
-        <a href="{{ route("register") }}"><h1>{{ auth()->user()->name }}</h1></a>
+        @if(auth()->user())
+            <a href="{{ route("register") }}"><h1>{{ auth()->user()->name }}</h1></a>
+        @endif
         <!-- Navbar nav -->
         <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
             <li class="nav-item dropdown with-arrow active">
