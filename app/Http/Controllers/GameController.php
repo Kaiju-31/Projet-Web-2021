@@ -12,9 +12,15 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('games.index');
+        $search = $request->get("search");
+        if ($search) {
+            $game = Game::where('name', 'like', '%'.$search.'%')->get();
+        } else {
+            $game = Game::all();
+        }
+        return view("games.index", ["games" => $game, "search" => $search]);
     }
 
     /**
@@ -46,7 +52,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return view("games.show", ["game" => $game]);
     }
 
     /**

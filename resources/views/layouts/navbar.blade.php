@@ -1,11 +1,12 @@
-<div class="page-wrapper with-navbar">
+<div class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom" data-sidebar-type="overlayed-all">
     <!-- Navbar (immediate child of the page wrapper) -->
+    <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
     <nav class="navbar">
         <!-- Navbar brand -->
-        <a href="#" class="navbar-brand">
+        <a href="{{ route("game.index") }}" class="navbar-brand">
             <img src="https://www.gethalfmoon.com/static/site/img/fake-logo.svg" alt="#">
-            @yield('login_member')
         </a>
+        <a href="{{ route("register") }}"><h1>{{ auth()->user()->name }}</h1></a>
         <!-- Navbar nav -->
         <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
             <li class="nav-item dropdown with-arrow active">
@@ -36,15 +37,23 @@
         </ul>
         <!-- Navbar form (inline form) -->
         <div class="navbar-content ml-auto">
-            <form class="form-inline d-none d-md-flex ml-auto" action="..." method="..."> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                <input type="search" class="form-control" placeholder="Search" name="search">
+            <form class="form-inline d-none d-md-flex ml-auto" method="GET"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
+                <input type="text" class="form-control" placeholder="Search" name="search">
                 <button class="btn btn-success mr-5" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <a href="" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
+            <a href="{{ route("login") }}" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
+            <a href="{{ route("register") }}" class="btn btn-secondary mr-5"><i class="fas fa-user-plus"></i></a>
             <button class="btn mr-5" type="button" onclick="halfmoon.toggleDarkMode()"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
     <div class="content-wrapper">
-        @yield('content')
+        <div class="container-fluid">
+            @yield('content')
+        </div>
     </div>
+    <nav class="navbar navbar-fixed-bottom">
+        <span class="navbar-text ml-auto">
+            © Copyright 2021, Chotard Rodolf & Mourgues Paul
+        </span>
+    </nav>
 </div>
