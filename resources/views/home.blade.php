@@ -9,32 +9,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header"><h1>Dashboard</h1></div>
 
                     <div class="card-body">
                         @if(auth()->user()->is_admin == 1)
                             <a href="{{url('admin/routes')}}">Admin {{ auth()->user()->name }}</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                        
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-
                         @else
-                            <div class=”panel-heading”> {{ auth()->user()->name }} </div>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            <div class=”panel-heading”><h2>{{ auth()->user()->name }}</h2></div>
                         @endif
                     </div>
                 </div>

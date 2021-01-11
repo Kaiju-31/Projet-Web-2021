@@ -44,7 +44,21 @@
                 <button class="btn btn-success mr-5" type="submit"><i class="fas fa-search"></i></button>
             </form>
             <a href="{{ route("login") }}" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
-            <a href="{{ route("register") }}" class="btn btn-secondary mr-5"><i class="fas fa-user-plus"></i></a>
+
+            @if(auth()->user())
+                <a class="btn mr-5" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @else
+                <a href="{{ route("register") }}" class="btn btn-secondary mr-5"><i class="fas fa-user-plus"></i></a>
+            @endif
+
             <button class="btn mr-5" type="button" onclick="halfmoon.toggleDarkMode()"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
