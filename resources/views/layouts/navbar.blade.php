@@ -46,7 +46,7 @@
             <a href="{{ route("login") }}" class="btn btn-primary mr-5"><i class="far fa-user"></i></a>
 
             @if(auth()->user())
-                <a class="btn mr-5" href="{{ route('logout') }}"
+                <a class="btn btn-danger mr-5" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i>
