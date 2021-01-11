@@ -19,5 +19,13 @@
         </div>
     @endforeach
     </div>
+    @if($search)
+        <br>
+        <div>
+            <center>
+                <a href="{{route("game.index")}}" class="btn btn-danger">RESET SEARCH</a>
+            </center>
+        </div>
+    @endif
 @endsection
 
