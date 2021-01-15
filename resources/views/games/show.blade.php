@@ -53,11 +53,15 @@
                     <label>Quantity :</label>
                     @if($game->quantity > 20)
                     <div class="progress h-25"> <!-- h-25 = height: 2.5rem (25px) -->
-                        <div class="progress-bar rounded-0 bg-success" role="progressbar" style="width: {{$game->quantity}}%" aria-valuenow="{{$game->quantity}}" aria-valuemin="0" aria-valuemax="100">{{$game->quantity}}</div> <!-- w-three-quarter = width: 75%, rounded-0 = border-radius: 0 -->
+                        <div class="progress-bar rounded-0 bg-success" role="progressbar" style="width: {{$game->quantity}}%" aria-valuenow="{{$game->quantity}}" aria-valuemin="0" aria-valuemax="100">
+                            {{$game->quantity}}
+                        </div> <!-- w-three-quarter = width: 75%, rounded-0 = border-radius: 0 -->
                     </div>
                     @else
                     <div class="progress h-25"> <!-- h-25 = height: 2.5rem (25px) -->
-                        <div class="progress-bar rounded-0 bg-danger" role="progressbar" style="width: {{$game->quantity}}%" aria-valuenow="{{$game->quantity}}" aria-valuemin="0" aria-valuemax="100">{{$game->quantity}}</div> <!-- w-three-quarter = width: 75%, rounded-0 = border-radius: 0 -->
+                        <div class="progress-bar rounded-0 bg-danger" role="progressbar" style="width: {{$game->quantity}}%" aria-valuenow="{{$game->quantity}}" aria-valuemin="0" aria-valuemax="100">
+                            {{$game->quantity}}
+                        </div> <!-- w-three-quarter = width: 75%, rounded-0 = border-radius: 0 -->
                     </div>
                     @endif
                 </div>
@@ -65,27 +69,19 @@
             </div>
             <hr />
             <!-- Second content container nested inside card (comments) -->
+
             <div class="content">
                 <h2 class="content-title">
-                    Comments
+                    COMMENTS :
                 </h2>
-                <div>
-                    <strong>John Doe</strong>
-                    <br />
-                    Amazing picture! Great job!
-                </div>
-                <hr />
-                <div>
-                    <strong>Jane Doe</strong>
-                    <br />
-                    This is beautiful.
-                </div>
-                <hr />
-                <div>
-                    <strong>James Bucks</strong>
-                    <br />
-                    This is just pretentious enough for my tastes. I love it.
-                </div>
+{{--                @foreach ($users as $user)--}}
+{{--                    <div>--}}
+{{--                        <strong>{{$user->name}}</strong>--}}
+{{--                        <br />--}}
+{{--                        {{$comment->comment}}--}}
+{{--                    </div>--}}
+{{--                    <hr />--}}
+{{--                @endforeach--}}
                 <div class="text-center mt-20"> <!-- text-center = text-align: center, mt-20 = margin-top: 2rem (20px) -->
                     <button class="btn btn-sm"><i class="fas fa-plus"></i></button>
                 </div>
