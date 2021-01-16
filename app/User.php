@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function comments() {
         return $this->belongsToMany(Comment::class);
     }
+
+    public function games() {
+        return $this->belongsToMany(Game::class);
+    }
 }
