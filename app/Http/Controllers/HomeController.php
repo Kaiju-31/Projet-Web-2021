@@ -20,9 +20,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $game = Game::all();
-        $purchases = Purchase::all();
-        return view('home', ["game" => $game, "purchases" => $purchases]);
+        $user = auth()->user();
+        $purchase = Purchase::where('user_id', 'like', $user->id)->get();
+        $game = [];
+        $i = 0;
+        foreach ($purchase as $p) {
+            $game[$i] = Game::where('id', 'like', $p->game_id)->get();
+            $i += 1;
+        }
+        return view('home', ["games" => $game]);
     }
 
     /**

@@ -19,15 +19,18 @@
                             <span>Mail : {{ auth()->user()->email }} </span>
                             <p>Solde : {{ auth()->user()->balance }} €</p>
 
-                            @foreach(auth()->user()->purchases as $u_purchase)
-                                <p> {{ $u_purchase->date_purchase }} </p>
-                                <p> {{ $u_purchase->game_id }} </p>
-                            @endforeach
-                            @if (is_array($game) || is_object($game))
-                            @foreach($purchases->auth()->user()->games as $u_game)
-                                <p> {{ $u_game->name }} </p>
-                            @endforeach
-                                @endif
+
+{{--                            @foreach(auth()->user()->purchases as $u_purchase)--}}
+{{--                                <p> {{ $u_purchase->date_purchase }} </p>--}}
+{{--                            @endforeach--}}
+
+                            <div class=”panel-heading”>
+                                <h5>Games purchases:</h5>
+                                @php($i = 0)
+                                @foreach($games as $g)
+                                    <p><i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i></p>
+                                @endforeach
+                            </div>
 
                         @endif
                     </div>
