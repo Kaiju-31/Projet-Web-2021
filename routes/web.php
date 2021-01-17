@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,9 @@ Route::resources([
     "home" => "HomeController"
 ]);
 
-Route::get('admin/home', [HomeController::class, 'adminHome'])
-    ->name('admin.home')->
-    middleware('is_admin');
+Route::get('admin/routes', 'HomeController@admin')->middleware('is_admin');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')
-    ->name('home');
+//Route::get('/home', 'HomeController@index')
+//    ->name('home');

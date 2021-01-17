@@ -13,15 +13,24 @@
 
                     <div class="card-body">
                         @if(auth()->user()->is_admin == 1)
-                            <a href="{{url('admin/routes')}}"> Admin {{ auth()->user()->name }} </a>
+                            <a href="{{url('admin/routes')}}"> Admin {{ ucwords(auth()->user()->name) }} </a>
                         @else
-                            <div class=”panel-heading”><h2> {{ auth()->user()->name }} </h2></div>
+                            <div class=”panel-heading”><h2> {{ ucwords(auth()->user()->name) }} </h2></div>
                             <span>Mail : {{ auth()->user()->email }} </span>
                             <p>Solde : {{ auth()->user()->balance }} €</p>
+
 
 {{--                            @foreach(auth()->user()->purchases as $u_purchase)--}}
 {{--                                <p> {{ $u_purchase->date_purchase }} </p>--}}
 {{--                            @endforeach--}}
+
+                            <div class=”panel-heading”>
+                                <h5>Games purchases:</h5>
+                                @php($i = 0)
+                                @foreach($games as $g)
+                                    <p><i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i></p>
+                                @endforeach
+                            </div>
 
                         @endif
                     </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use App\Purchase;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -20,8 +20,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $purchase = Purchase::all();
-        return view('home', ["purchases" => $purchase]);
+        $user = auth()->user();
+        $purchase = Purchase::where('user_id', 'like', $user->id)->get();
+        $game = [];
+        $i = 0;
+        foreach ($purchase as $p) {
+            $game[$i] = Game::where('id', 'like', $p->game_id)->get();
+            $i += 1;
+        }
+        return view('home', ["games" => $game]);
     }
 
     /**
