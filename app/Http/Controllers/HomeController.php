@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Game;
 use App\Purchase;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,29 @@ class HomeController extends Controller
             $i += 1;
         }
         return view('home', ["games" => $game]);
+    }
+
+    public function edit($value)
+    {
+        return view('auth.edit', ['value'=>$value]);
+    }
+
+    public function update(Request $request, $id)
+    {
+//        $request->validate([
+//            'name'=>'required',
+//            'specialite'=>'required'
+//        ]);
+//
+//        $promotion = promotion::find($id);
+//
+//
+//        $promotion->name = $request->input('name');
+//        $promotion->specialite=$request->input('specialite');
+//
+//
+//        $promotion->save();
+        return redirect()->route('home');
     }
 
     /**
