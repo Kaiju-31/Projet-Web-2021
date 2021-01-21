@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "GameController@index");
+Route::get('/', "GameController@index")
+->name('games.index');
 Route::resources([
     "game" => "GameController",
     "user" => "UserController",
@@ -31,5 +32,4 @@ Route::patch('admin/updateBalance/{id}', 'HomeController@updateBalance')->name('
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')
-//    ->name('home');
+Route::post('/cart/add', 'CartController@store')->name('cart.store');

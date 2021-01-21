@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+
+    @if(session('success'))
+        <div style="margin-top: 1%" class="alert alert-success" role="alert">
+            <button class="close" data-dismiss="alert" type="button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="row">
     @foreach($games as $game)
         <div class="w-400 mw-full col-3">
