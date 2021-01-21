@@ -39,11 +39,11 @@
                                 <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdown-toggle-btn-1">
                                     <h6 class="dropdown-header" style="text-align: center"><i>SETTINGS</i></h6>
                                     <a href="{{ route('home.edit', $id) }}" class="dropdown-item">Name</a>
-{{--                                    <a href="{{ route('home.editEmail', $id) }}" class="dropdown-item">Email</a>--}}
-{{--                                    <a href="{{ route('home.editPassword', $id) }}" class="dropdown-item">Password</a>--}}
+                                    <a href="{{ route('home.editEmail', $id) }}" class="dropdown-item">Email</a>
+                                    <a href="{{ route('home.editPassword', $id) }}" class="dropdown-item">Password</a>
                                     <div class="dropdown-divider"></div>
                                     <div class="dropdown-content">
-{{--                                        <a href="{{ route('home.balance', $id) }}" class="btn btn-danger" style="width: 100%" type="button">Add solde</a>--}}
+                                        <a href="{{ route('home.balance', $id) }}" class="btn btn-danger" style="width: 100%" type="button">Add solde</a>
                                     </div>
                                 </div>
                             </div>
