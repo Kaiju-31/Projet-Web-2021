@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Purchase;
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
+use function GuzzleHttp\Psr7\uri_for;
 
 class HomeController extends Controller
 {
@@ -29,6 +32,81 @@ class HomeController extends Controller
             $i += 1;
         }
         return view('home', ["games" => $game]);
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('auth.edit', ['value'=>1, 'user'=>$user]);
+    }
+
+    public function editEmail($id)
+    {
+        $user = User::find($id);
+        return view('auth.edit', ['value'=>2, 'user'=>$user]);
+    }
+
+    public function editPassword($id)
+    {
+        $user = User::find($id);
+        return view('auth.edit', ['value'=>3, 'user'=>$user]);
+    }
+
+    public function balance($id)
+    {
+        $user = User::find($id);
+        return view('auth.SoldeManagement', ['user'=>$user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'balance'=>'required',
+            'is_admin',
+            'remember_token'=>'required'
+        ]);
+
+        $user = User::find($id);
+
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->balance = $request->input('balance');
+        $user->is_admin = $request->input('is_admin');
+        $user->remember_token = $request->input('remember_token');
+
+
+        $user->save();
+        return redirect()->route('home.index');
+    }
+
+    public function updateBalance(Request $request, $id)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'NewSold'=>'required',
+            'Balance'=>'required',
+            'is_admin',
+            'remember_token'=>'required'
+        ]);
+
+        $userS = User::find($id);
+
+        $userS->name = $request->input('name');
+        $userS->email = $request->input('email');
+        $userS->password = $request->input('password');
+        $userS->balance = $request->input('balance') + $request->input('NewSold');
+        $userS->is_admin = $request->input('is_admin');
+        $userS->remember_token = $request->input('remember_token');
+
+        $userS->save();
+        return redirect()->route('home.index');
     }
 
     /**
