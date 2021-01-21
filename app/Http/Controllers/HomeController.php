@@ -87,11 +87,13 @@ class HomeController extends Controller
     public function updateBalance(Request $request, $id)
     {
         $request->validate([
+            'CardNumber'=>['required', 'min:16', 'max:16'],
+            'Cvv'=>['required', 'min:3', 'max:3'],
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
-            'NewSold'=>'required',
-            'Balance'=>'required',
+            'NewSold'=>['required', 'string', 'max:10'],
+            'balance'=>'required',
             'is_admin',
             'remember_token'=>'required'
         ]);
