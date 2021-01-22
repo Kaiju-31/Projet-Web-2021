@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
-{{--    <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href="style.css">--}}
 
     <title>@yield('title')</title>
 </head>

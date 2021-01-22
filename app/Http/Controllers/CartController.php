@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -44,12 +45,11 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('auth.cart');
     }
 
     /**
@@ -70,9 +70,9 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $row)
     {
-        //
+
     }
 
     /**
@@ -81,8 +81,12 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $row)
     {
-        //
+        $rowId = $row->id;
+
+        Cart::remove($rowId);
+
+        return view('auth.cart');
     }
 }

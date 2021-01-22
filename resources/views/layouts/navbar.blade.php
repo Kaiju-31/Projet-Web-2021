@@ -38,7 +38,7 @@
             </li>
         </ul>
         @if(auth()->user())
-            <a class="btn mr-5" href=""><i class="fas fa-shopping-cart"><span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></i></a>
+            <a class="btn mr-5" href="{{ route('cart.show', auth()->user()->id) }}"><i class="fas fa-shopping-cart"><span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></i></a>
         @endif
         <!-- Navbar form (inline form) -->
         <div class="navbar-content ml-auto">
