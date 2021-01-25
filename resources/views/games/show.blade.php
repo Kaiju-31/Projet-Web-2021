@@ -8,9 +8,9 @@
     <div class="mw-full"> <!-- w-600 = width: 60rem (600px), mw-full = max-width: 100% -->
         <div class="card p-1"> <!-- p-0 = padding: 0 -->
             <div class="row">
-                <img src="{{ $game->image }}" class="img-fluid rounded-top"> <!-- rounded-top = rounded corners on the top -->
+                <img src="{{ $game->image }}" width="25%" class="img-fluid rounded-top"> <!-- rounded-top = rounded corners on the top -->
                 <!-- First content container nested inside card -->
-                <div class="content">
+                <div class="content right-0">
                     <h1 class="content-title">
                         {{$game->name}}
                     </h1>

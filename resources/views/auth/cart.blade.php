@@ -7,37 +7,27 @@
 @section('content')
 
     @if(Cart::count() > 0)
-        <div class="px-4 px-lg-0">
-            <!-- For demo purpose -->
-            <div class="container text-white py-5 text-center">
-                <h1 class="display-4">Bootstrap 4 shopping cart</h1>
-                <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
-                <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
-                        <u>Bootstrapious</u></a>
-                </p>
-            </div>
-            <!-- End -->
-
-            <div class="pb-5">
+        <div style="margin-top: 2%">
+            <div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                        <div class="col-lg-12 p-5 rounded shadow-sm mb-5">
 
                             <!-- Shopping cart table -->
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0">
                                             <div class="p-2 px-3 text-uppercase">Product</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0">
                                             <div class="py-2 text-uppercase">Price</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0">
                                             <div class="py-2 text-uppercase">Quantity</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0">
                                             <div class="py-2 text-uppercase">Remove</div>
                                         </th>
                                     </tr>
@@ -49,7 +39,7 @@
                                                 <div class="p-2">
                                                     <img src="{{ $game->model->image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                                                     <div class="ml-3 d-inline-block align-middle">
-                                                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{ $game->name }}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
+                                                        <h5 class="mb-0"> <a href="#" class="d-inline-block align-middle">{{ $game->name }}</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
                                                     </div>
                                                 </div>
                                             </th>
@@ -71,9 +61,12 @@
                         </div>
                     </div>
 
-                    <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                    <div class="row py-5 p-4 rounded shadow-sm">
                         <div class="col-lg-6">
-                            <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
                             <div class="p-4">
                                 <ul class="list-unstyled mb-4">
                                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>{{ Cart::subtotal() }}</strong></li>
@@ -91,7 +84,17 @@
         </div>
 
     @else
-        <p>Your cart is empty</p>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <strong><h2>Ouups, your cart is empty...</h2></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 
 @endsection
