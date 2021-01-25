@@ -13,10 +13,10 @@
 @include('layouts.navbar')
 
 
-
+@yield('extra-script')
 <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
 <script src="path/to/halfmoon.js"></script>
 <script src="https://kit.fontawesome.com/7c50a0efb9.js" crossorigin="anonymous"></script>
-{{--<script src="{{ asset('resources/js/script.js') }}" type="text/javascript"></script>--}}
+@yield('extra-js')
 </body>
 </html>

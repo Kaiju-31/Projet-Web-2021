@@ -25,7 +25,8 @@ Route::resources([
     "user" => "UserController",
     "purchase" => "PurchaseController",
     "home" => "HomeController",
-    "cart" => "CartController"
+    "cart" => "CartController",
+    "checkout" => "CheckoutController"
 ]);
 
 Route::get('admin/routes', 'HomeController@admin')->middleware('is_admin');
@@ -44,3 +45,5 @@ Route::delete('/cart/{rowId}', 'CartController@destroy')->name('cart.destroy');
 Route::get('/videpanier', function () {
     Cart::destroy();
 });
+
+//Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
