@@ -31,7 +31,13 @@ class HomeController extends Controller
             $game[$i] = Game::where('id', 'like', $p->game_id)->get();
             $i += 1;
         }
-        return view('home', ["games" => $game]);
+        $all_games = Game::all();
+        $all_users = User::all();
+        if ($user->is_admin == 1) {
+            return view('admin', ["games" => $all_games, "users" => $all_users]);
+        } else {
+            return view('home', ["games" => $game]);
+        }
     }
 
     public function edit($id)
