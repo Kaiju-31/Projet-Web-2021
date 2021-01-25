@@ -97,8 +97,8 @@ class CartController extends Controller
     public function destroy($rowId)
     {
         Cart::remove($rowId);
-
         return back()->with('success', 'Product has been deleted');
+
         //Cart::destroy();
 //        Cart::remove($rowId);
 //        return view('auth.cart');

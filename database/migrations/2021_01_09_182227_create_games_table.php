@@ -21,6 +21,7 @@ class CreateGamesTable extends Migration
             $table->integer("quantity");
             $table->float("price");
             $table->string("plateform");
+            $table->string("activation_code");
             $table->timestamps();
         });
     }
