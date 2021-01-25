@@ -18,13 +18,11 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $userMail = $user = auth()->user()->mail;
         Stripe::setApiKey('sk_test_51IDLtMCK5z95ADJxO0266kVibRkKZxBkhMOW8EIF78f1JEjTTvq9bYXgyfEsD9NCCVvm4CA4UjHBiU9eAV8sLtEl00fWKUL1HX');
 
         $intent = PaymentIntent::create([
            'amount' => round(Cart::total()) * 100,
            'currency' => 'eur',
-           'receipt_email' => $userMail,
         ]);
         $clientSecret = Arr::get($intent, 'client_secret');
 
@@ -51,7 +49,10 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::destroy();
+        $data = $request->json()->all();
+
+        return $data['paymentIntent'];
     }
 
     /**
