@@ -65,15 +65,15 @@
                             </div>
                         @endif
                     </div>
+
                     @if(auth()->user())
                         <form action="{{ route('cart.store') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="id" value="{{ $game->id }}">
-                            <input type="hidden" name="name" value="{{ $game->name }}">
-                            <input type="hidden" name="price" value="{{ $game->price }}">
+                            <input type="hidden" name="game_id" value="{{ $game->id }}">
                             <button style="margin-top: 4%" class="btn btn-primary" type="submit">Add to cart</button>
                         </form>
                     @endif
+
                 </div>
             </div>
             <hr />

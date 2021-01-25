@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Game;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,20 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::add($request->id, $request->name, 1,$request->price)
+        $duplicata = Cart::search(function ($cartItem, $rowId) use ($request) {
+           return $cartItem->id == $request->game_id;
+        });
+
+        if ($duplicata->isNotEmpty()) {
+            return redirect()->route('games.index')->with('success', 'The product has already been added');
+        }
+
+        $game = Game::find($request->game_id);
+
+        Cart::add($game->id, $game->name, 1, $game->price)
             ->associate("App\Game");
+
+        //Cart::instance(auth()->user()->id)->store(auth()->user()->name);
 
         return redirect()->route('games.index')->with('success', 'Product successfully added');
     }
@@ -78,15 +91,16 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param $rowId
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $row)
+    public function destroy($rowId)
     {
-        $rowId = $row->id;
-
         Cart::remove($rowId);
 
-        return view('auth.cart');
+        return back()->with('success', 'Product has been deleted');
+        //Cart::destroy();
+//        Cart::remove($rowId);
+//        return view('auth.cart');
     }
 }
