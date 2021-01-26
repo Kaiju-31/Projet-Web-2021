@@ -40,14 +40,9 @@ Auth::routes();
 
 Route::post('/cart/add', 'CartController@store')->name('cart.store');
 Route::get('/cart/{id}', 'CartController@show')->name('cart.show');
+Route::patch('/cart/{rowId}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{rowId}', 'CartController@destroy')->name('cart.destroy');
 
-Route::get('/videpanier', function () {
-    Cart::destroy();
-});
-
-//Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-//Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 Route::get('/merci', function () {
    return view('checkout.thankyou');
 });

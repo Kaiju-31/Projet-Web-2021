@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('extra-meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('title')
     Cart of {{ ucwords(auth()->user()->name) }}
 @endsection
@@ -43,8 +47,14 @@
                                                     </div>
                                                 </div>
                                             </th>
-                                            <td class="border-0 align-middle"><strong>{{ $game->price }}</strong></td>
-                                            <td class="border-0 align-middle"><strong>{{ $game->qty }}</strong></td>
+                                            <td class="border-0 align-middle"><strong>{{ $game->subtotal() }} €</strong></td>
+                                            <td class="border-0 align-middle">
+                                                <select name="quantity" id="quantity" data-id="{{ $game->rowId }}" class="form-control">
+                                                    @for($i = 1; $i <= 10; $i++)
+                                                        <option value="{{ $i }} {{ $i == $game->quantity ? 'selected' : '' }}">{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </td>
                                             <td class="border-0 align-middle">
                                                 <form action="{{ route('cart.destroy', $game->rowId) }}" method="POST">
                                                     @csrf
@@ -97,4 +107,37 @@
         </div>
     @endif
 
+@endsection
+
+@section('extra-js')
+    <script>
+        const selects = document.querySelectorAll('#quantity');
+        Array.from(selects).forEach((element) => {
+           element.addEventListener('change', function () {
+              let rowId = this.getAttribute('data-id');
+              let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+              fetch(
+                  `/cart/${rowId}`,
+                  {
+                      headers: {
+                          "Content-Type": "application/json",
+                          "Accept": "application/json, text-plain, */*",
+                          "X-Request-With": "XMLHttpRequest",
+                          "X-CSRF-TOKEN": token
+                      },
+                      method: 'patch',
+                      body: JSON.stringify({
+                          quantity: this.value
+                      })
+                  }).then((data) => {
+                        console.log(data);
+                        location.reload();
+              }).catch((error) => {
+                  console.log(error);
+              })
+           });
+        });
+
+        let total = document.getElementById()
+    </script>
 @endsection

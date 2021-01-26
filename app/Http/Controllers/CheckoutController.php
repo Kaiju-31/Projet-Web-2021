@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
@@ -23,8 +24,15 @@ class CheckoutController extends Controller
         $intent = PaymentIntent::create([
            'amount' => round(Cart::total()) * 100,
            'currency' => 'eur',
+           'receipt_email' => Auth::user()->email
         ]);
         $clientSecret = Arr::get($intent, 'client_secret');
+        
+//        $pdf = fopen('/path/to/a/file.jpg', 'r');
+//        \Stripe\File::create([
+//            'file' => $pdf,
+//            'purpose' => 'tax_document_user_upload',
+//        ]);
 
         return view('checkout.index', [
             'clientSecret' => $clientSecret,
