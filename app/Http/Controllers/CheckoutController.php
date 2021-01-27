@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Order;
+use DateTime;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
@@ -27,7 +30,7 @@ class CheckoutController extends Controller
            'receipt_email' => Auth::user()->email
         ]);
         $clientSecret = Arr::get($intent, 'client_secret');
-        
+
 //        $pdf = fopen('/path/to/a/file.jpg', 'r');
 //        \Stripe\File::create([
 //            'file' => $pdf,
@@ -57,11 +60,39 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        Cart::destroy();
         $data = $request->json()->all();
 
-        return $data['paymentIntent'];
+        $order = new Order();
+
+        $order->payment_intent_id = $data['paymentIntent']['id'];
+        $order->amount = $data['paymentIntent']['amount'];
+
+        $order->payment_created_at = (new DateTime())
+            ->setTimestamp($data['paymentIntent']['created'])
+            ->format('Y-m-d H:i:s');
+
+        $products = [];
+        $i = 0;
+
+        foreach (Cart::content() as $product) {
+            $products['product_' . $i][] = $product->model->name;
+            $products['product_' . $i][] = $product->model->price;
+            $products['product_' . $i][] = $product->quantity;
+            $i += 1;
+        }
+
+        $order->products = serialize($products);
+        $order->user_id = Auth::user()->id;
+        $order->save();
+
+        if ($data['paymentIntent']['status'] == 'succeeded') {
+            Cart::destroy();
+            return response()->json(['success' => 'Payment Intent Succeeded']);
+        } else {
+            return response()->json(['success' => 'Payment Intent Not Succeeded']);
+        }
     }
+
 
     /**
      * Display the specified resource.
