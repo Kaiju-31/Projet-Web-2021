@@ -25,7 +25,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        return view('games.create');
     }
 
     /**
@@ -36,7 +36,26 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'photo'=>'required',
+            'quantity'=>'required',
+            'code'=>'required',
+            'price'=>'required'
+        ]);
+
+        $game = new game([
+            'name'=>$request->input('name'),
+            'description'=>$request->input('description'),
+            'image'=>$request->input('photo'),
+            'quantity'=>$request->input('quantity'),
+            'code'=>$request->input('code'),
+            'price'=>$request->input('price')
+        ]);
+        $game->save();
+
+        return redirect()->route('home.index');
     }
 
     /**
