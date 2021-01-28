@@ -42,7 +42,8 @@ class GameController extends Controller
             'photo'=>'required',
             'quantity'=>'required',
             'code'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'plateform'=>'required'
         ]);
 
         $game = new game([
@@ -51,7 +52,8 @@ class GameController extends Controller
             'image'=>$request->input('photo'),
             'quantity'=>$request->input('quantity'),
             'code'=>$request->input('code'),
-            'price'=>$request->input('price')
+            'price'=>$request->input('price'),
+            'plateform'=>$request->input('plateform')
         ]);
         $game->save();
 
@@ -75,9 +77,11 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $game)
+    public function edit($id)
     {
-        //
+        $game = Game::find($id);
+
+        return view('games.edit', ['game'=>$game]);
     }
 
     /**
@@ -87,9 +91,31 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'image'=>'required',
+            'description'=>'required',
+            'quantity'=>'required',
+            'price'=>'required',
+            'plateform'=>'required',
+            'code'=>'required'
+        ]);
+
+        $game = Game::find($id);
+
+        $game->name = $request->input('name');
+        $game->description = $request->input('description');
+        $game->image = $request->input('image');
+        $game->quantity = $request->input('quantity');
+        $game->code = $request->input('code');
+        $game->price = $request->input('price');
+        $game->plateform = $request->input('plateform');
+
+        $game->save();
+
+        return redirect()->route('home.index');
     }
 
     /**
@@ -100,6 +126,8 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        $game->delete();
+
+        return redirect()->route('home.index');
     }
 }

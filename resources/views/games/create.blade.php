@@ -21,6 +21,16 @@
             <input type="text" class="form-control" id="code" name="code">
             <label for="price">Price :</label>
             <input type="text" class="form-control" id="price" name="price">
+            <label for="plateform">Plateform :</label>
+            <select type="text" class="form-control" id="plateform" required="required" name="plateform">
+                <option value="" selected="selected" disabled="disabled">Select the plateform</option>
+                <option value="Playstation 5">Playstation 5</option>
+                <option value="Playstation 4">Playstation 4</option>
+                <option value="Xbox Serie">Xbox Serie</option>
+                <option value="Xbox One">Xbox One</option>
+                <option value="Steam">Steam</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+            </select>
         </div>
 
         <center>
