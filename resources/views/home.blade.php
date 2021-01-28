@@ -12,28 +12,19 @@
                     <div class="card-header"><h1> Dashboard</h1></div>
 
                     <div class="card-body">
-                        @if(auth()->user()->is_admin == 1)
-                            <a style="color: #ae1c17" href="{{url('admin/routes')}}"> Admin {{ ucwords(auth()->user()->name) }} </a>
-                        @else
-                            <div class=”panel-heading” style="color: #ae1c17"><h2> {{ ucwords(auth()->user()->name) }} </h2></div>
-                            <span><b>Mail :</b> {{ auth()->user()->email }} </span>
-                            <p><b>Solde :</b> {{ auth()->user()->balance }} €</p>
+                        <div class=”panel-heading” style="color: #ae1c17"><h2> {{ ucwords(auth()->user()->name) }} </h2></div>
+                        <span><b>Mail :</b> {{ auth()->user()->email }} </span>
+                        <p><b>Solde :</b> {{ auth()->user()->balance }} €</p>
 
-
-{{--                            @foreach(auth()->user()->purchases as $u_purchase)--}}
-{{--                                <p> {{ $u_purchase->date_purchase }} </p>--}}
-{{--                            @endforeach--}}
-
-                            <div class=”panel-heading”>
-                                <h5>Games purchases:</h5>
-                                @php([$i = 0, $modif = 0])
-                                @foreach($games as $g)
-                                    <p><i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i></p>
-                                @endforeach
-                            </div>
-                        @endif
-                            @php($id = (auth()->user()->id))
-                            <center>
+                        <div class=”panel-heading”>
+                            <h5>Games purchases:</h5>
+                            @php([$i = 0, $modif = 0])
+                            @foreach($games as $g)
+                                <p><i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i></p>
+                            @endforeach
+                        </div>
+                        @php($id = (auth()->user()->id))
+                        <center>
                             <div class="dropdown with-arrow" style="width: 100%">
                                 <a class="btn btn-square btn-primary rounded-circle" data-toggle="dropdown" type="button" id="dropdown-toggle-btn-1" aria-haspopup="true" aria-expanded="false">&plus;</a>
                                 <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdown-toggle-btn-1">
@@ -47,7 +38,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </center>
+                        </center>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "aFERFA28FTG"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -27,7 +28,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "kiu78hgTYU5YTRffg5"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -35,7 +37,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "aFErg68ghbsdG"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -43,7 +46,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "azhFG56gfGDR"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -51,7 +55,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "GEe6dlmx5d6"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -59,7 +64,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "aFGHJK36e5rtfG"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -67,7 +73,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "azdvfertrd214gh"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feditioncollector.fr%2Fwp-content%2Fuploads%2F2020%2F07%2FThe-Last-of-Us-Part-II-cd-musiques-bande-originale.jpg&f=1&nofb=1",
@@ -75,7 +82,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "ZRFo5GFK56fghy"
                 ],
                 [
                     "image" => "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.xboxpassion.fr%2Fimages%2Fjaquette%2F3-359-assassins-creed-iii.jpg&f=1&nofb=1",
@@ -83,7 +91,8 @@ class GameSeeder extends Seeder
                     "description" => "Action, Survie",
                     "quantity" => 13,
                     "price" => 69.99,
-                    "plateform" => "PS5"
+                    "plateform" => "PS5",
+                    "code"=> "A123RJmsioIG564"
                 ],
             ]
         );

@@ -72,7 +72,7 @@ class HomeController extends Controller
             'password'=>'required',
             'balance'=>'required',
             'is_admin',
-            'remember_token'=>'required'
+            'remember_token'
         ]);
 
         $user = User::find($id);
