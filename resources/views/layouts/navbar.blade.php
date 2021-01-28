@@ -37,6 +37,9 @@
                 </div>
             </li>
         </ul>
+        @if(auth()->user())
+            <a class="btn mr-5" href="{{ route('cart.show', auth()->user()->id) }}"><i class="fas fa-shopping-cart"><span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></i></a>
+        @endif
         <!-- Navbar form (inline form) -->
         <div class="navbar-content ml-auto">
             <form class="form-inline d-none d-md-flex ml-auto" method="GET"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->

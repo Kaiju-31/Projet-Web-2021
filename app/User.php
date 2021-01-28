@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function games() {
         return $this->belongsToMany(Game::class);
     }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }
