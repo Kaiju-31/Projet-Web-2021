@@ -27,15 +27,9 @@ class CheckoutController extends Controller
         $intent = PaymentIntent::create([
            'amount' => round(Cart::total()) * 100,
            'currency' => 'eur',
-           'receipt_email' => Auth::user()->email
+           'receipt_email' => Auth::user()->email,
         ]);
         $clientSecret = Arr::get($intent, 'client_secret');
-
-//        $pdf = fopen('/path/to/a/file.jpg', 'r');
-//        \Stripe\File::create([
-//            'file' => $pdf,
-//            'purpose' => 'tax_document_user_upload',
-//        ]);
 
         return view('checkout.index', [
             'clientSecret' => $clientSecret,
