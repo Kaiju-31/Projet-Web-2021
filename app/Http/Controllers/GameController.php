@@ -13,7 +13,7 @@ class GameController extends Controller
         if ($search) {
             $game = Game::where('name', 'like', '%'.$search.'%')->get();
         } else {
-            $game = Game::all();
+            $game = Game::paginate(4);
         }
         return view("games.index", ["games" => $game, "search" => $search]);
     }

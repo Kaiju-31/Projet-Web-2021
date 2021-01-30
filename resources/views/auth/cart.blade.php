@@ -73,7 +73,7 @@
 
                     <div class="row py-5 p-4 rounded shadow-sm">
                         <div class="col-lg-6">
-
+                            <h4>Your funds : {{ Auth::user()->balance }} €</h4>
                         </div>
                         <div class="col-lg-6">
                             <div class="rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>

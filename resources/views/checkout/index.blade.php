@@ -13,6 +13,18 @@
 @endsection
 
 @section('content')
+    @if(Auth::user()->balance < Cart::total())
+        <div class="card w-half" style="margin-top: 2%; margin-left: 25%">
+            <div class="card-header">
+                <h1>We are sorry your funds are insufficient to process the payment !</h1>
+                <p>Your funds : {{ Auth::user()->balance }} €</p>
+                <p>Amount of the order : {{ Cart::total() }} €</p>
+            </div>
+            <div class="card-body">
+                <a href="{{ route('cart.show', auth()->user()->id) }}" class="btn btn-primary">Return to your cart</a>
+            </div>
+        </div>
+    @else
     <div class="card w-half" style="margin-top: 2%; margin-left: 25%">
         <div class="card-header"><h1>Payment</h1></div>
         <div class="card-body">
@@ -29,6 +41,7 @@
             </form>
         </div>
     </div>
+    @endif
 @endsection
 
 @section('extra-js')
