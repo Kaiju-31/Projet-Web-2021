@@ -101,7 +101,7 @@ class HomeController extends Controller
             'NewSold'=>['required', 'string', 'max:10'],
             'balance'=>'required',
             'is_admin',
-            'remember_token'=>'required'
+            'remember_token'
         ]);
 
         $userS = User::find($id);

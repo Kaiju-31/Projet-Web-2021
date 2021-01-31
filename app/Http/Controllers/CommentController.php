@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Game;
+use App\User;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,13 +26,24 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * choose between create a new comment or modify the actual one
      *
-     * @return \Illuminate\Http\Response
+     * @param $id_game
+     * @param $id_user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function createEdit($id_game, $id_user)
     {
-        //
+        $user = User::find($id_user);
+        $game = Game::find($id_game);
+        $comment = Comment::where('id_user', 'like', $user->id, 'and', 'id_game', 'like', $game->id)->get();
+//        dd($comment);
+        $nbr=$comment->Count();
+        if ($nbr == 0) {
+            return view('games.com.create', ['game'=>$game, 'user'=>$user]);
+        } else {
+            return view('games.com.edit', ['game'=>$game, 'user'=>$user]);
+        }
     }
 
     /**
@@ -45,17 +64,6 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
     {
         //
     }

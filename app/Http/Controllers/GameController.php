@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Game;
+use App\User;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -68,7 +70,20 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return view("games.show", ["game" => $game]);
+        $comment = Comment::where('id_game', 'like', $game->id)->get();
+        //$user = User::where('id', 'like', $comment->id_user)->get();
+        $note = 0;
+        $user = [];
+        $i = 0;
+        foreach ($comment as $c) {
+            $note += $c->note;
+            $user[$i] = User::where('id', 'like', $c->id_user)->get();
+            $i += 1;
+        }
+        $note_f = $note / $i;
+        $n_comment = count($comment);
+        //dd($comment);
+        return view("games.show", ["game" => $game, "comment" => $comment, "user" => $user, "note" => $note_f, "num_com" => $n_comment]);
     }
 
     /**

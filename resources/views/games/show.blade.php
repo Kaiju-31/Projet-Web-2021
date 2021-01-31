@@ -39,10 +39,10 @@
                     <br>
                     <div>
                     <span class="badge">
-                        <i class="fa fa-comments text-justify mr-3" aria-hidden="true"></i> 5 comments <!-- text-primary = color: primary-color, mr-5 = margin-right: 0.5rem (5px) -->
+                        <i class="fa fa-comments text-justify mr-3" aria-hidden="true"></i> {{$num_com}} comments <!-- text-primary = color: primary-color, mr-5 = margin-right: 0.5rem (5px) -->
                     </span>
                         <span class="badge ml-5"> <!-- ml-5 = margin-left: 0.5rem (5px) -->
-                        <i class="fas fa-star text-secondary mr-3"></i> 4<!-- text-danger = color: danger-color, mr-5 = margin-right: 0.5rem (5px) -->
+                        <i class="fas fa-star text-secondary mr-3"></i> {{$note}}<!-- text-danger = color: danger-color, mr-5 = margin-right: 0.5rem (5px) -->
                     </span>
                         <span class="badge ml-5"> <!-- ml-5 = margin-left: 0.5rem (5px) -->
                         <i class="fas fa-tag text-black-50 mr-3"> {{$game->price}}</i><!-- text-danger = color: danger-color, mr-5 = margin-right: 0.5rem (5px) -->
@@ -73,7 +73,6 @@
                             <button style="margin-top: 4%" class="btn btn-primary" type="submit">Add to cart</button>
                         </form>
                     @endif
-
                 </div>
             </div>
             <hr />
@@ -83,14 +82,16 @@
                 <h2 class="content-title">
                     COMMENTS :
                 </h2>
-                {{--                @foreach ($users as $user)--}}
-                {{--                    <div>--}}
-                {{--                        <strong>{{$user->name}}</strong>--}}
-                {{--                        <br />--}}
-                {{--                        {{$comment->comment}}--}}
-                {{--                    </div>--}}
-                {{--                    <hr />--}}
-                {{--                @endforeach--}}
+                @php($i = 0)
+                @foreach ($comment as $com)
+                    <div>
+{{--                        <strong>{{$user[$i]}}</strong> // ne marche pas avec $user[$i]->name et jsp pk--}}
+                        <br>
+                        <b>Note:</b> <i>{{$com->note}}</i>
+                        <br>
+                        <b>Comment:</b> {{$com->comment}}
+                    </div>
+                @endforeach
                 <div class="text-center mt-20"> <!-- text-center = text-align: center, mt-20 = margin-top: 2rem (20px) -->
                     <button class="btn btn-sm"><i class="fas fa-plus"></i></button>
                 </div>
