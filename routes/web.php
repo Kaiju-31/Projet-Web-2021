@@ -46,6 +46,8 @@ Route::delete('/cart/{rowId}', 'CartController@destroy')->name('cart.destroy');
 
 Route::get('comment/{games}/{user}', 'CommentController@createEdit')->name("comment.createEdit");
 
+Route::get('gameAdmin/{game}', 'GameController@showAdmin')->name("game.showAdmin");
+
 Route::get('/merci', function () {
    return view('checkout.thankyou');
 });

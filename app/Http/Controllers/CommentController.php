@@ -36,13 +36,20 @@ class CommentController extends Controller
     {
         $user = User::find($id_user);
         $game = Game::find($id_game);
-        $comment = Comment::where('id_user', 'like', $user->id, 'and', 'id_game', 'like', $game->id)->get();
-//        dd($comment);
-        $nbr=$comment->Count();
+
+        $comments = Comment::where('id_user', 'like', $id_user, 'and', 'id_game', 'like', $id_game)->get();
+        $nbr = $comments->Count();
+
+        foreach ($comments as $com) {
+            $comment = $com;
+        }
+
+        //dd($nbr);
+        
         if ($nbr == 0) {
             return view('games.com.create', ['game'=>$game, 'user'=>$user]);
         } else {
-            return view('games.com.edit', ['game'=>$game, 'user'=>$user]);
+            return view('games.com.edit', ['game'=>$game, 'user'=>$user, "comment"=>$comment]);
         }
     }
 

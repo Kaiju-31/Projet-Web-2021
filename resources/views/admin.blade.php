@@ -72,7 +72,7 @@
                                 <tr>
                                     <th> {{$game->id}} </th>
                                     <td> {{$game->name}}
-                                        <a href="{{ route('game.show', $game) }}"><i class="fas fa-search"></i></a>
+                                        <a href="{{ route('game.showAdmin', $game) }}"><i class="fas fa-search"></i></a>
                                     </td>
                                     <td> {{$game->quantity}} </td>
                                     <td> {{$game->price}} </td>
