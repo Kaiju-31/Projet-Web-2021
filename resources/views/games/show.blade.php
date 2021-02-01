@@ -70,7 +70,11 @@
                         <form action="{{ route('cart.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="game_id" value="{{ $game->id }}">
-                            <button style="margin-top: 4%" class="btn btn-primary" type="submit">Add to cart</button>
+                            <button style="margin-top: 4%" class="btn btn-primary" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
+                        </form>
+                    @else
+                        <form action="{{ route('register') }}" method="">
+                            <button style="margin-top: 4%" class="btn btn-primary" type="submit"><i class="fas fa-cart-arrow-down"></i></button>
                         </form>
                     @endif
 
