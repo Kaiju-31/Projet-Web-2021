@@ -42,14 +42,9 @@ class HomeController extends Controller
         }
     }
     public function show($id) {
-        $purchase = Purchase::where('user_id', 'like', $id)->get();
-        $game = [];
-        $i = 0;
-        foreach ($purchase as $p) {
-            $game[$i] = Game::where('id', 'like', $p->game_id)->get();
-            $i += 1;
-        }
-        return view('games.purchase', ["games" => $game]);
+        $purchase = Order::where('user_id', 'like', $id)->get();
+        //dd($purchase);
+        return view('games.purchase', ["games" => $purchase]);
     }
 
     public function edit($id)

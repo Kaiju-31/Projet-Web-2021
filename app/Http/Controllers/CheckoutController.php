@@ -73,10 +73,12 @@ class CheckoutController extends Controller
             $products['product_' . $i][] = $product->model->name;
             $products['product_' . $i][] = $product->model->price;
             $products['product_' . $i][] = $product->quantity;
+            $products['product_' . $i][] = $product->code;
             $i += 1;
         }
 
-        $order->products = serialize($products);
+
+        $order->products = json_encode($products);
         $order->user_id = Auth::user()->id;
         $order->save();
 

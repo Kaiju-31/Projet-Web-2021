@@ -12,12 +12,14 @@
                     <div class="card-body">
                         <div class=”panel-heading”>
                             <h5>Purchases :</h5>
-                            @php([$i = 0, $modif = 0])
+{{--                            @php([$i = 0, $modif = 0])--}}
+{{--                            <input type="" value="{{ $products = json_decode($games, true) }}">--}}
+
                             @foreach($games as $g)
                                 <div>
-                                    <i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i>
+                                    <i><a>{{ $g->products }} ({{$g->user_id}} €)</a></i>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <i class="fas fa-key" style="color: #ae1c17"></i>&nbsp;&nbsp;<b>{{$g[$i]->code}}</b>
+                                    <i class="fas fa-key" style="color: #ae1c17"></i>&nbsp;&nbsp;<b>{{$g->code}}</b>
                                 </div>
                             @endforeach
                         </div>
