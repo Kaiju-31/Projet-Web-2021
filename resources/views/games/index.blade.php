@@ -12,6 +12,13 @@
             </button>
             {{ session('success') }}
         </div>
+    @elseif(session('error'))
+        <div style="margin-top: 1%" class="alert alert-danger" role="alert">
+            <button class="close" data-dismiss="alert" type="button" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session('error') }}
+        </div>
     @endif
 
     <div class="row">
@@ -28,16 +35,17 @@
             </div>
         @endforeach
     </div>
-    <div>
-        <div style="text-align: center;">
-            {{ $games->links() }}
-        </div>
-    </div>
     @if($search)
         <br>
         <div>
             <div style="text-align: center;">
                 <a href="{{route("game.index")}}" class="btn btn-danger">RESET SEARCH</a>
+            </div>
+        </div>
+    @else
+        <div>
+            <div style="text-align: center;">
+                {{ $games->links() }}
             </div>
         </div>
     @endif

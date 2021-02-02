@@ -28,7 +28,6 @@
                                     <label for="CardNumber" class="text-center">Card number :</label>
                                     <input type="number" class="form-control" id="CardNumber" name="CardNumber">
                                 </div>
-
                             </div>
                             <div class="form-row row-eq-spacing-sm">
                                 <div class="col-sm">

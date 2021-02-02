@@ -138,6 +138,6 @@
            });
         });
 
-        let total = document.getElementById()
+
     </script>
 @endsection

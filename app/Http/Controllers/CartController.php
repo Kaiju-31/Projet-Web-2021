@@ -49,12 +49,16 @@ class CartController extends Controller
 
         $game = Game::find($request->game_id);
 
-        Cart::add($game->id, $game->name, 1, $game->price)
-            ->associate("App\Game");
+        if ($game->quantity > 0) {
+            Cart::add($game->id, $game->name, 1, $game->price)
+                ->associate("App\Game");
+        } else {
+            return redirect()->route('games.index')->with('error', 'Sorry, This product is empty');
+        }
 
         //Cart::instance(auth()->user()->id)->store(auth()->user()->name);
 
-        return redirect()->route('games.index')->with('success', 'Product successfully added');
+            return redirect()->route('games.index')->with('success', 'Product successfully added');
     }
 
     /**
