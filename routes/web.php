@@ -26,10 +26,13 @@ Route::resources([
     "purchase" => "PurchaseController",
     "home" => "HomeController",
     "cart" => "CartController",
-    "checkout" => "CheckoutController"
+    "checkout" => "CheckoutController",
+    "comment" => "CommentController"
 ]);
 
-Route::get('admin/routes', 'HomeController@admin')->middleware('is_admin');
+
+Route::get('member/routes', 'HomeController@admin')->middleware('is_admin');
+
 Route::get('member/editEmail/{id}', 'HomeController@editEmail')->name('home.editEmail');
 Route::get('member/editPassword/{id}', 'HomeController@editPassword')->name('home.editPassword');
 Route::get('member/balance/{id}', 'HomeController@balance')->name('home.balance');
@@ -42,6 +45,10 @@ Route::post('/cart/add', 'CartController@store')->name('cart.store');
 Route::get('/cart/{id}', 'CartController@show')->name('cart.show');
 Route::patch('/cart/{rowId}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{rowId}', 'CartController@destroy')->name('cart.destroy');
+
+Route::get('comment/{games}/{user}', 'CommentController@createEdit')->name("comment.createEdit");
+
+Route::get('gameAdmin/{game}', 'GameController@showAdmin')->name("game.showAdmin");
 
 Route::get('/merci', function () {
    return view('checkout.thankyou');

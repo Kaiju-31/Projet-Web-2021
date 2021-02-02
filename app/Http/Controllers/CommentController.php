@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Game;
+use App\User;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,13 +26,34 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * choose between create a new comment or modify the actual one
      *
-     * @return \Illuminate\Http\Response
+     * @param $id_game
+     * @param $id_user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function createEdit($id_game, $id_user)
     {
-        //
+        $user = User::find($id_user);
+        $game = Game::find($id_game);
+
+        $comments = Comment::all();
+        $nbr = 0;
+
+        foreach ($comments as $com) {
+            if ($com->id_game == $id_game && $com->id_user == $id_user) {
+                $nbr = 1;
+                $comment = $com;
+            }
+        }
+
+        //dd($comment);
+
+        if ($nbr == 0) {
+            return view('games.com.create', ['game'=>$game, 'user'=>$user]);
+        } else {
+            return view('games.com.edit', ['game'=>$game, 'user'=>$user, "comment"=>$comment]);
+        }
     }
 
     /**
@@ -35,7 +64,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'comment'=>'required',
+            'id_user'=>'required',
+            'id_game'=>'required',
+            'note'=>'required'
+        ]);
+
+        $comment = new comment([
+            'comment'=>$request->input('comment'),
+            'id_user'=>$request->input('id_user'),
+            'id_game'=>$request->input('id_game'),
+            'note'=>$request->input('note')
+        ]);
+        $comment->save();
+
+        return redirect()->route('home.index');
     }
 
     /**
@@ -50,26 +94,31 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'comment'=>'required',
+            'id_user'=>'required',
+            'id_game'=>'required',
+            'note'=>'required'
+        ]);
+
+        $comment = Comment::find($id);
+
+        $comment->comment = $request->input('comment');
+        $comment->id_user = $request->input('id_user');
+        $comment->id_game = $request->input('id_game');
+        $comment->note = $request->input('note');
+
+        $comment->save();
+
+        return redirect()->route('home.index');
     }
 
     /**

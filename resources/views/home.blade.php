@@ -12,18 +12,23 @@
                     <div class="card-header"><h1> Dashboard</h1></div>
 
                     <div class="card-body">
-                        <div class=”panel-heading” style="color: #ae1c17"><h2> {{ ucwords(auth()->user()->name) }} </h2></div>
+                        <div class=”panel-heading” style="color: #ae1c17"><h2> <b>{{ ucwords(auth()->user()->name) }}</b> </h2></div>
                         <span><b>Mail :</b> {{ auth()->user()->email }} </span>
                         <p><b>Solde :</b> {{ auth()->user()->balance }} €</p>
-
+                        @php($id = (auth()->user()->id))
                         <div class=”panel-heading”>
-                            <h5>Games purchases:</h5>
+                            <h5>Games purchases :</h5>
                             @php([$i = 0, $modif = 0])
                             @foreach($games as $g)
-                                <p><i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i></p>
+                                <div>
+                                    <i><a>{{$g[$i]->name}} ({{$g[$i]->price}} €)</a></i>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="fas fa-key" style="color: #ae1c17"></i>&nbsp;&nbsp;<b>{{$g[$i]->code}}</b>
+                                    <a class="float-lg-right" href="{{ route('comment.createEdit', [$g[$i]->id, $id]) }}" class="btn btn-rounded btn-sm btn-primary" type="button"><i class="fas fa-comment-dots"></i></a>
+                                </div>
                             @endforeach
                         </div>
-                        @php($id = (auth()->user()->id))
+                        <br>
                         <center>
                             <div class="dropdown with-arrow" style="width: 100%">
                                 <a class="btn btn-square btn-primary rounded-circle" data-toggle="dropdown" type="button" id="dropdown-toggle-btn-1" aria-haspopup="true" aria-expanded="false">&plus;</a>
@@ -34,7 +39,7 @@
                                     <a href="{{ route('home.editPassword', $id) }}" class="dropdown-item">Password</a>
                                     <div class="dropdown-divider"></div>
                                     <div class="dropdown-content">
-                                        <a href="{{ route('home.balance', $id) }}" class="btn btn-danger" style="width: 100%" type="button">Add solde</a>
+                                        <a href="{{ route('home.balance', $id) }}" class="btn btn-danger" style="width: 100%" type="button"><i class="fas fa-credit-card"></i></a>
                                     </div>
                                 </div>
                             </div>
