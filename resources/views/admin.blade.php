@@ -18,7 +18,7 @@
                         @php($i += 1)
                     @endforeach
                     @foreach($purchases as $purchase)
-                        {{$earnings += ($purchase->amount) / 100}}
+                        <input value="{{$earnings += ($purchase->amount) / 100}}" type="hidden">
                         @php($j += 1)
                     @endforeach
                     <div class="card-body">
