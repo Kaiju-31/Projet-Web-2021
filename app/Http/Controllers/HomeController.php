@@ -80,7 +80,7 @@ class HomeController extends Controller
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->balance = $request->input('balance');
         $user->is_admin = $request->input('is_admin');
         $user->remember_token = $request->input('remember_token');

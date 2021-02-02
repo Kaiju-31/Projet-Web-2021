@@ -51,7 +51,7 @@
             <div class="form-group container-md">
                 <label for="password">Password :</label>
                 <input type="hidden" class="form-control" id="name" name="name" value="{{ $user->name }}">
-                <input type="text" class="form-control" id="password" name="password" placeholder="{{ $user->password }}" value="{{ $user->password }}">
+                <input type="text" class="form-control" id="password" name="password" placeholder="" value="">
                 <input type="hidden" class="form-control" id="email" name="email" value="{{ $user->email }}">
             </div>
 
