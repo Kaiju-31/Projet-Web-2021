@@ -24,11 +24,13 @@
     <div class="row">
         @foreach($games as $game)
             <div class="w-400 mw-full col-3">
-                <div class="card p-0 shadow-lg">
-                    <a href="{{ route("game.show", $game) }}"><img src="{{ $game->image }}" class="img-fluid rounded-top" alt=""></a>
+                <div class="card p-0 shadow-lg" style="height: 90%">
+                    <a href="{{ route("game.show", $game) }}"><img style="height: 75%; width: 100%" src="{{ $game->image }}" class="img-fluid rounded-top" alt=""></a>
                     <div class="content">
-                        <h2 class="content-title">
+                        <h2 class="content-title" style="text-align: center;">
+                            <strong>
                             {{ $game->name }}
+                            </strong>
                         </h2>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
         </div>
     @else
         <div>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-top: 1%">
                 {{ $games->links() }}
             </div>
         </div>
