@@ -7,10 +7,11 @@
 @section('content')
     <h2 style="text-align: center">Change comment</h2>
     <form method="post" action="{{ route('comment.update', $comment->id) }}">
+        @method('PATCH')
         @csrf
         <div class="form-group container-md">
             <label for="comment">comment :</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="{{ $comment->comment }}" value="{{ $comment->comment }}">
+            <input type="text" class="form-control" id="comment" name="comment" placeholder="{{ $comment->comment }}" value="{{ $comment->comment }}">
 
             <input type="hidden" class="form-control" id="id_user" name="id_user" value="{{ $user->id }}" placeholder="{{ $comment->id_user }}" value="{{ $comment->id_user }}">
             <input type="hidden" class="form-control" id="id_game" name="id_game" value="{{ $game->id }}" placeholder="{{ $comment->id_game }}" value="{{ $comment->id_game }}">
@@ -21,7 +22,7 @@
                 <option value="1">1/5</option>
                 <option value="2">2/5</option>
                 <option value="3">3/5</option>
-                <option value="4">4</option>
+                <option value="4">4/5</option>
                 <option value="5">5/5</option>
             </select>
         </div>

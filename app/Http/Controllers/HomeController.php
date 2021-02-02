@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Order;
 use App\Purchase;
 use App\User;
 use Illuminate\Contracts\Support\Renderable;
@@ -31,13 +32,24 @@ class HomeController extends Controller
             $game[$i] = Game::where('id', 'like', $p->game_id)->get();
             $i += 1;
         }
+        $all_purchases = Order::all();
         $all_games = Game::all();
         $all_users = User::all();
         if ($user->is_admin == 1) {
-            return view('admin', ["games" => $all_games, "users" => $all_users]);
+            return view('admin', ["games" => $all_games, "users" => $all_users, "purchases" => $all_purchases]);
         } else {
             return view('home', ["games" => $game]);
         }
+    }
+    public function show($id) {
+        $purchase = Purchase::where('user_id', 'like', $id)->get();
+        $game = [];
+        $i = 0;
+        foreach ($purchase as $p) {
+            $game[$i] = Game::where('id', 'like', $p->game_id)->get();
+            $i += 1;
+        }
+        return view('games.purchase', ["games" => $game]);
     }
 
     public function edit($id)

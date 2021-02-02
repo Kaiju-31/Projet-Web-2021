@@ -12,11 +12,20 @@
                     <div class="card-header">Dashboard <a>Admin</a></div>
                     <br>
                     @php($i = 0)
+                    @php($j = 0)
+                    @php($earnings = 0)
                     @foreach($users as $user)
                         @php($i += 1)
                     @endforeach
+                    @foreach($purchases as $purchase)
+                        {{$earnings += ($purchase->amount) / 100}}
+                        @php($j += 1)
+                    @endforeach
                     <div class="card-body">
-                        <a style="color: #fde300">Number of member : {{$i}}</a>
+                        <h3> <i class="fas fa-money-check-alt"></i> {{$earnings}} €</h3>
+                    </div>
+                    <div class="card-body">
+                        <a style="color: #fde300">Number of members : {{$i}}</a> | <a style="color: #2a9055">Number of sales : {{$j}}</a>
                     </div>
                     <div>
                         <table class="table">
@@ -25,6 +34,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Purchases</th>
                                 <th>Edit</th>
                             </tr>
                             </thead>
@@ -34,6 +44,7 @@
                                     <th> {{$user->id}} </th>
                                     <td> {{$user->name}} </td>
                                     <td> {{$user->email}} </td>
+                                    <td><a href="{{ route('home.show', $user->id) }}" class="btn btn-square btn-dark rounded-circle"><i class="fas fa-search-dollar"></i></a></td>
                                     <td class="dropdown with-arrow">
                                         <a class="btn btn-square btn-primary rounded-circle" data-toggle="dropdown" type="button" id="dropdown-toggle-btn-1" aria-haspopup="true" aria-expanded="false">&plus;</a>
                                         <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdown-toggle-btn-1">

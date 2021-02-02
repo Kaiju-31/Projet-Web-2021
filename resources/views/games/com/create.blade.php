@@ -10,18 +10,18 @@
         @csrf
         <div class="form-group container-md">
             <label for="comment">comment :</label>
-            <input type="text" class="form-control" id="name" name="name" >
+            <input type="text" class="form-control" id="comment" name="comment" >
 
             <input type="hidden" class="form-control" id="id_user" name="id_user" value="{{ $user->id }}">
             <input type="hidden" class="form-control" id="id_game" name="id_game" value="{{ $game->id }}">
 
             <label for="note">Note :</label>
-            <select type="text" class="form-control" id="plateform" required="required" name="plateform">
+            <select type="text" class="form-control" id="note" required="required" name="note">
                 <option value="" selected="selected" disabled="disabled">Note this game (1 to 5)</option>
                 <option value="1">1/5</option>
                 <option value="2">2/5</option>
                 <option value="3">3/5</option>
-                <option value="4">4</option>
+                <option value="4">4/5</option>
                 <option value="5">5/5</option>
             </select>
         </div>

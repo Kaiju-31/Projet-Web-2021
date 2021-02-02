@@ -44,8 +44,8 @@ class CommentController extends Controller
             $comment = $com;
         }
 
-        //dd($nbr);
-        
+        //dd($comments);
+
         if ($nbr == 0) {
             return view('games.com.create', ['game'=>$game, 'user'=>$user]);
         } else {
@@ -61,7 +61,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'comment'=>'required',
+            'id_user'=>'required',
+            'id_game'=>'required',
+            'note'=>'required'
+        ]);
+
+        $comment = new comment([
+            'comment'=>$request->input('comment'),
+            'id_user'=>$request->input('id_user'),
+            'id_game'=>$request->input('id_game'),
+            'note'=>$request->input('note')
+        ]);
+        $comment->save();
+
+        return redirect()->route('home.index');
     }
 
     /**
@@ -82,9 +97,25 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'comment'=>'required',
+            'id_user'=>'required',
+            'id_game'=>'required',
+            'note'=>'required'
+        ]);
+
+        $comment = Comment::find($id);
+
+        $comment->comment = $request->input('comment');
+        $comment->id_user = $request->input('id_user');
+        $comment->id_game = $request->input('id_game');
+        $comment->note = $request->input('note');
+
+        $comment->save();
+
+        return redirect()->route('home.index');
     }
 
     /**
